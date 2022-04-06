@@ -2,10 +2,17 @@
 #include "Snake.h"
 #include <assert.h>
 
-Board::Board( Graphics& gfx )
+Board::Board( Graphics& gfx, int in_width, int in_height, int in_dimension )
 	:
-	gfx( gfx )
-{}
+	gfx( gfx ),
+	width(in_width),
+	height(in_height),
+	dimension(in_dimension),
+	contents(new CellContents[width * height] {CellContents::Empty}),
+	x((Graphics::ScreenWidth - (borderWidth + borderPadding) * 2 - width * dimension) / 2 ),
+	y((Graphics::ScreenHeight - (borderWidth + borderPadding) * 2 - height * dimension) / 2)
+{
+}
 
 void Board::DrawCell( const Location & loc,Color c )
 {

@@ -26,15 +26,16 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	brd( gfx ),
+	gameSettings( "settings.txt" ),
+	brd( gfx, gameSettings.GetBoardWidth(), gameSettings.GetBoardHeight(), gameSettings.GetTileSize() ),
 	rng( std::random_device()() ),
 	snek( {2,2} )
 {
-	for( int i = 0; i < nPoison; i++ )
+	for( int i = 0; i < gameSettings.GetPoisonCount(); i++)
 	{
 		brd.SpawnContents( rng,snek,Board::CellContents::Poison );
 	}
-	for( int i = 0; i < nFood; i++ )
+	for( int i = 0; i < gameSettings.GetFoodCount(); i++)
 	{
 		brd.SpawnContents( rng,snek,Board::CellContents::Food );
 	}

@@ -1,0 +1,14 @@
+[Tile Setting]
+30
+
+[Board Setting]
+25 15
+
+[SpeedUpRate Setting]
+0.9
+
+[PoisonCount Setting]
+100
+
+[FoodCount Setting]
+10
